@@ -57,7 +57,7 @@ function EditMovie() {
       <div className="w-full max-w-5xl">
         <h1 className="text-4xl font-bold text-white mb-10">Edit Movie</h1>
 
-        {error && <p className="text-red-490 text-sm mb-6">{error}</p>}
+        {error && <p className="text-red-500 text-sm mb-6">{error}</p>}
 
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <label
