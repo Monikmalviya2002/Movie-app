@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../utills/constant";
 
 function EditMovie() {
   const { id } = useParams(); 
@@ -15,11 +16,11 @@ function EditMovie() {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const res = await axios.get(`http://localhost:7777/api/movies/${id}`);
+        const res = await axios.get(`${BASE_URL}/api/movies/${id}`);
         const movie = res.data;
         setTitle(movie.title);
         setPublishingYear(movie.publishingYear);
-        setPosterPreview(`http://localhost:7777/${movie.poster.replace(/\\/g, "/")}`);
+        setPosterPreview(`${BASE_URL}/${movie.poster.replace(/\\/g, "/")}`);
       } catch (err) {
         console.error("Error fetching movie:", err);
       }
@@ -41,7 +42,7 @@ function EditMovie() {
     if (poster) formData.append("poster", poster);
 
     try {
-      await axios.put(`http://localhost:7777/api/update/${id}`, formData, {
+      await axios.put(`${BASE_URL}/api/update/${id}`, formData, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       });
