@@ -9,13 +9,13 @@ function Movies() {
   const limit = 8; 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
+      useEffect(() => {
+       const fetchMovies = async () => {
+        try {
         const res = await axios.get(
-  `http://localhost:7777/api/movies?page=${page}&limit=8`,
-  { withCredentials: true }
-);
+       `http://localhost:7777/api/movies?page=${page}&limit=8`,
+        { withCredentials: true }
+           );
         setMovies(res.data.movies || []);
         setTotalMovies(res.data.total || 0);
       } catch (err) {
@@ -44,11 +44,11 @@ function Movies() {
 
   return (
     <div className="min-h-screen bg-[#03191e] px-6 py-8">
-      {movies.length === 0 ? (
-        <div className="flex flex-col items-center justify-center mt-20 gap-6">
-          <h1 className="text-3xl font-bold text-white text-center">
+           {movies.length === 0 ? (
+          <div className="flex flex-col items-center justify-center mt-20 gap-6">
+           <h1 className="text-3xl font-bold text-white text-center">
             Your movie list is empty
-          </h1>
+           </h1>
           <button
             onClick={() => navigate("/movies/create")}
             className="bg-green-700 text-white py-2 px-6 rounded-lg font-medium hover:bg-green-500 transition-colors"
@@ -56,30 +56,24 @@ function Movies() {
             Add a new movie
           </button>
         </div>
-      ) : (
-        <div className="max-w-6xl mx-auto">
-         
-    <div className="flex items-center mb-8 justify-between">
-  {/* Left side: Title + Add Movie */}
-  <div className="flex items-center space-x-4">
-    <h1 className="text-4xl font-bold text-white">My Movies</h1>
-    <button
-      onClick={() => navigate("/movies/create")}
-      aria-label="Add Movie"
-    >
-      <i className="fa-solid fa-square-plus text-white text-4xl cursor-pointer"></i>
-    </button>
-  </div>
+        ) : (
 
-  {/* Right side: Logout */}
-  <button
-    onClick={handleLogout}
-    className="flex items-center text-white"
-  >
-    <span>Logout</span>
-    <i className="fa-solid fa-right-from-bracket text-white text-xl ml-3"></i>
-  </button>
-</div>
+             <div className="max-w-6xl mx-auto">
+            <div className="flex items-center mb-8 justify-between">
+            <div className="flex items-center space-x-4">
+           <h1 className="text-4xl font-bold text-white">My Movies</h1>
+
+          <button onClick={() => navigate("/movies/create")} >
+       <i className="fa-solid fa-square-plus text-white text-4xl cursor-pointer"></i>
+          </button>
+         </div>
+
+  
+      <button onClick={handleLogout} className="flex items-center text-white">
+      <span>Logout</span>
+      <i className="fa-solid fa-right-from-bracket text-white text-xl ml-2"></i>
+     </button>
+     </div>
 
 
          
