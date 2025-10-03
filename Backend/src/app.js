@@ -6,10 +6,13 @@ import cookieParser from "cookie-parser";
 import connectDB from "./config/database.js";
 import authRoutes from "./routes/auth.js";
 import movieRoutes from "./routes/movie.js";
+import "dotenv/config";
+
 
 
 const app = express();
 
+ const PORT = process.env.PORT;
 
   const corsOptions = {
    origin: "http://localhost:5173",
@@ -30,7 +33,7 @@ connectDB()
     console.log("DATABASE connection is succesfull");
 
 
-app.listen(7777,()=>{
+app.listen(PORT,()=>{
     console.log("server is active on 7777");
 })
 })
