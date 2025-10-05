@@ -15,7 +15,7 @@ const app = express();
  const PORT = process.env.PORT;
 
   const corsOptions = {
-  origin: "https://movie-app-2loh-git-clean-main-monik-malviyas-projects.vercel.app",
+  origin: "https://clean-main.d33ui84ydqoopt.amplifyapp.com",
   credentials: true,
 };
 
