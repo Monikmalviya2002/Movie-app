@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../utills/constant";
 
 function Movies() {
   const [movies, setMovies] = useState([]);
@@ -13,13 +14,13 @@ function Movies() {
        const fetchMovies = async () => {
         try {
         const res = await axios.get(
-       `http://localhost:7777/api/movies?page=${page}&limit=8`,
+        `${BASE_URL}/api/movies?page=${page}&limit=8`,
         { withCredentials: true }
            );
         setMovies(res.data.movies || []);
         setTotalMovies(res.data.total || 0);
       } catch (err) {
-        console.error("Error fetching movies:", err);
+        console.error("Error in fetching movies:", err);
         setMovies([]);
       }
     };
@@ -28,7 +29,7 @@ function Movies() {
 
           const handleLogout = async()=>{
     try {
-         await axios.post("http://localhost:7777/api/logout",{} ,
+         await axios.post(BASE_URL+ "/api/logout",{} ,
        {withCredentials: true,
         });
       
@@ -85,7 +86,7 @@ function Movies() {
               >
                 {movie.poster ? (
                   <img
-                    src={`http://localhost:7777/${movie.poster.replace(/\\/g, "/")}`}
+                    src={BASE_URL+`/${movie.poster.replace(/\\/g, "/")}`}
                     alt={movie.title}
                     className="w-full h-70 object-cover"
                   />
