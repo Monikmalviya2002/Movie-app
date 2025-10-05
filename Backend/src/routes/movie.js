@@ -1,6 +1,5 @@
 import express from "express";
 import Movie from "../models/movie.js";
-import auth from "../middleware/auth.js";
 import multer from "multer";
 import path from "path";
 
@@ -16,7 +15,7 @@ const movieRouter = express.Router();
         const upload = multer({ storage });
 
 
-         movieRouter.get("/movies", auth,async (req, res) => {
+         movieRouter.get("/movies",async (req, res) => {
           try {
        const page = parseInt(req.query.page) || 1;
        const limit = parseInt(req.query.limit) || 8;
@@ -37,7 +36,7 @@ const movieRouter = express.Router();
 });
 
 
- movieRouter.post("/create/movies", auth, upload.single("poster"), async (req, res) => {
+ movieRouter.post("/create/movies", upload.single("poster"), async (req, res) => {
          try {
           const newMovie = new Movie({
           title: req.body.title,
@@ -53,7 +52,7 @@ const movieRouter = express.Router();
 });
 
 
-         movieRouter.put("/update/:id", auth, upload.single("poster"), async (req, res) => {
+         movieRouter.put("/update/:id",  upload.single("poster"), async (req, res) => {
       try {
         const updateData = {
          title: req.body.title,
