@@ -49,7 +49,13 @@ import jwt from "jsonwebtoken";
              const token = await jwt.sign({_id: user._id}, "Monik@2002")
        
 
-             res.cookie("token", token);
+             res.cookie("token", token, {
+             httpOnly: true,
+              secure: true,      
+             sameSite: "None",  
+              
+                 });
+
                   res.status(200).send({ message: "User Login successfully",user });
                }
                else{
