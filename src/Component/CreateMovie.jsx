@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../utills/constant";
 
 function CreateMovie() {
   const [title, setTitle] = useState("");
@@ -24,8 +25,8 @@ function CreateMovie() {
     formData.append("poster", poster);
 
     try {
-      await axios.post("http://localhost:7777/api/create/movies", formData, {
-        withCredentials: true,
+      await axios.post(BASE_URL+"/api/create/movies", formData, {
+       
         headers: { "Content-Type": "multipart/form-data" },
       });
       navigate("/movies");

@@ -15,7 +15,7 @@ function Movies() {
         try {
         const res = await axios.get(
         `${BASE_URL}/api/movies?page=${page}&limit=8`,
-        { withCredentials: true }
+        
            );
         setMovies(res.data.movies || []);
         setTotalMovies(res.data.total || 0);
