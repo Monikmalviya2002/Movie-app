@@ -10,7 +10,6 @@ function App() {
   return (
     <BrowserRouter basename="/">
       <Routes>
-      <Route path="/" element ={<Signup/>}></Route>
         <Route path="/signup" element={<Signup />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/create" element={<CreateMovie />} />
