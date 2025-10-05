@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Movies from "./Movies";
+import { BASE_URL } from "../utills/constant";
 
 const Signup = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -16,7 +17,7 @@ const Signup = () => {
     try {
       if (isLogin) {
         const res = await axios.post(
-          "http://localhost:7777/api/login",
+          BASE_URL+"/api/login",
           { emailId, password },
           { withCredentials: true }
         );
@@ -24,7 +25,7 @@ const Signup = () => {
         navigate("/movies");
       } else {
         const res = await axios.post(
-          "http://localhost:7777/api/signup",
+          BASE_URL+ "/api/signup",
           { emailId, password },
           { withCredentials: true }
         );
