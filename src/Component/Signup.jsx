@@ -30,8 +30,7 @@ const Signup = () => {
           { withCredentials: true }
         );
         console.log("Signup success:", res.data);
-        alert("Signup successfully!");
-        navigate("/movie");
+        navigate("/movies");
       }
     } catch (err) {
       console.error("Auth error:", err.response?.data || err.message);
