@@ -70,7 +70,7 @@ function Movies() {
          </div>
 
   
-      <button onClick={handleLogout} className="flex items-center text-white">
+      <button onClick={handleLogout} className="flex items-center text-white cursor-pointer">
       <span>Logout</span>
       <i className="fa-solid fa-right-from-bracket text-white text-xl ml-2"></i>
      </button>
